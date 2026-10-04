@@ -1,0 +1,20 @@
+{
+  "name": "embrasure",
+  "interface": {
+    "displayName": "Embrasure"
+  },
+  "plugins": [
+    {
+      "name": "embrasure",
+      "source": {
+        "source": "local",
+        "path": "./"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Developer Tools"
+    }
+  ]
+}

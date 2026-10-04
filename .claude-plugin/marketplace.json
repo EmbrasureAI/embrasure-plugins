@@ -1,0 +1,16 @@
+{
+  "name": "embrasure",
+  "metadata": {
+    "description": "Your data warehouse, analytics, and beautiful dashboards, one prompt away"
+  },
+  "owner": {
+    "name": "Embrasure",
+    "email": "support@embrasure.ai"
+  },
+  "plugins": [
+    {
+      "name": "embrasure",
+      "source": "./"
+    }
+  ]
+}

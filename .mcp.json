@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "embrasure": {
+      "type": "http",
+      "url": "https://embrasure.ai/api/mcp"
+    }
+  }
+}

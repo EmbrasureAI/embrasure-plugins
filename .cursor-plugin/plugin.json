@@ -1,0 +1,27 @@
+{
+  "name": "embrasure",
+  "version": "0.6.2",
+  "description": "Your data warehouse, analytics, and beautiful dashboards, one prompt away",
+  "author": {
+    "name": "Embrasure",
+    "url": "https://embrasure.ai",
+    "email": "support@embrasure.ai"
+  },
+  "homepage": "https://embrasure.ai",
+  "keywords": [
+    "data",
+    "warehouse",
+    "analytics",
+    "one-prompt",
+    "sql",
+    "ingestion",
+    "context",
+    "ember",
+    "mcp"
+  ],
+  "license": "MIT",
+  "skills": "./skills/",
+  "mcpServers": "./.mcp.json",
+  "logo": "./assets/embrasure-icon.png",
+  "repository": "https://github.com/EmbrasureAI/embrasure-plugins"
+}
