@@ -68,8 +68,8 @@ establish the relationship. Set the dashboard layout through `position_json`.
 Do not add an empty `positions` object to `json_metadata`: Superset interprets it
 as a replacement layout and removes the chart links. If `positions` is supplied,
 it must contain the complete intended layout. For a rename, send only
-`dashboard_title`. Read back the layout and chart list, then run `bi_data` using
-the saved chart ID before claiming the dashboard works.
+`dashboard_title`. Read back the layout and chart list, then read the saved chart's
+`query_context` and pass it as the `bi_data` payload before claiming the dashboard works.
 
 ## Apply requested changes
 
