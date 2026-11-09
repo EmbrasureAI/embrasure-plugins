@@ -12,8 +12,8 @@ Never ask for warehouse passwords, API keys, or session tokens in chat; use brow
 
 Use the installed MCP connection. Do not send an already connected user through
 installation again or require an external setup guide. Start with `warehouse_status`
-and `sources_list` in the intended workspace. If authentication is missing, use the
-client's browser OAuth flow and resume after an authenticated status call succeeds.
+and `sources_list` in the intended workspace. If the Embrasure tools are missing, or a
+call says “Connect Embrasure to continue”, follow “When the Embrasure tools are missing” below.
 
 For a new warehouse, inspect `warehouse_plan` and apply the requested setup. Inspect
 source types, connect the requested sources through browser handoffs, then plan and
@@ -31,6 +31,51 @@ needs to make. Report pending or blocked sources without claiming they are ready
 data. A connected source or running sync is not a completed answer. Verify query results
 and report ready, pending, and blocked sources before claiming analytics are ready.
 For an existing warehouse, go straight to the requested question or dashboard.
+
+## When the Embrasure tools are missing
+
+Some clients, including Codex, hide MCP startup and sign-in failures from the agent.
+Missing tools alone do not show that sign-in is needed. If the client loads tools on
+demand, search for the Embrasure tools first. If they are still missing, find the
+client's entry whose URL is `https://embrasure.ai/api/mcp`, and use its listed name:
+
+- Codex: `codex mcp list`. Read the Status column first, then Auth.
+- Claude Code: `claude mcp list`. Plugin installs list `plugin:embrasure:embrasure`.
+- No shell, ChatGPT, or Cursor: ask the user what Embrasure shows in the client's MCP
+  or app settings (ChatGPT: Settings, then Apps; Cursor: Cursor Settings, then MCP).
+
+Tell the user which case applies:
+
+- **Installed, needs sign-in.** Codex: Status `enabled` and Auth `Not logged in`.
+  Claude Code: `Needs authentication`. A tool call that says “Connect Embrasure to
+  continue” means the same. Offer to reconnect right away (see below).
+- **Not installed or disabled.** No entry, Codex Status `disabled`, or Claude Code
+  `Disabled for this project`. Offer to install or enable the Embrasure plugin
+  (Claude Code: re-enable it in `/mcp`). Don't start a login for it.
+- **Status unclear.** Codex Auth `Unknown`, Claude Code `Failed to connect`, a missing
+  command, or a sandboxed shell without network access. Don't call the user signed in
+  or signed out. Rerun the check with network access, or ask the user to run it in
+  their own terminal.
+- **Signed in, tools still missing.** Codex Auth `OAuth`. Check whether Embrasure is up:
+  ```sh
+  curl -sS -m 10 -o /dev/null -w '%{http_code}\n' https://api.embrasure.ai/health
+  curl -sS -m 10 -o /dev/null -w '%{http_code}\n' -X POST -H 'Content-Type: application/json' -d '{}' https://embrasure.ai/api/mcp
+  ```
+  `200` then `401` means Embrasure is up. The `401` only shows the endpoint is
+  reachable, not why your client's sign-in failed. The saved sign-in is probably no
+  longer accepted, so offer to reconnect once. Anything else, including `000` for a
+  timeout or DNS failure, means Embrasure is unavailable or unreachable. Report it and don't send the user through
+  sign-in. From a sandboxed shell, a network error proves nothing.
+
+To reconnect, ask first. The command opens a browser and waits until the user approves:
+`codex mcp login <name>` in Codex, `claude mcp login <name>` or `/mcp` in Claude Code,
+or the client's own sign-in control. If your shell is sandboxed or has no terminal,
+ask for elevated permission or have the user run it in their terminal. Don't use flows
+that ask the user to paste a callback URL into chat. Codex adds the tools to the same
+chat after a successful sign-in. Confirm with `warehouse_status`, then continue the
+user's original request. Reconnect once. If the tools still don't appear, start a new
+chat (Claude Code: reconnect in `/mcp`), then contact https://embrasure.ai/support.
+Never ask for tokens or passwords.
 
 ## Choose the smallest useful action
 

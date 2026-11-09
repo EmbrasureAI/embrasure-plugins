@@ -31,6 +31,21 @@ You can also ask:
 - Connect my revenue data and build a dashboard.
 - What changed in our business this week?
 
+## If the Embrasure tools are missing
+
+Some clients hide a failed MCP sign-in from the agent, so the tools just don't
+appear. Check the connection status:
+
+- Codex: `codex mcp list`. If Auth shows `Not logged in`, run
+  `codex mcp login embrasure`. Codex adds the tools to the same chat.
+- Claude Code: `claude mcp list`. If it shows `Needs authentication`, run
+  `claude mcp login plugin:embrasure:embrasure`, or use `/mcp`.
+
+If Embrasure isn't listed or is disabled, enable the plugin. If it shows a saved
+sign-in but the tools are still missing, check `https://api.embrasure.ai/health`.
+A `200` means you should reconnect once; anything else means Embrasure is unavailable.
+If the tools still don't appear, [contact support](https://embrasure.ai/support).
+
 ## Install in Claude Code
 
 ```text
