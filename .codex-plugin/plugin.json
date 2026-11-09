@@ -1,6 +1,6 @@
 {
   "name": "embrasure",
-  "version": "0.6.3",
+  "version": "0.6.4",
   "description": "Your data warehouse, analytics, and beautiful dashboards, one prompt away",
   "author": {
     "name": "Embrasure",
@@ -55,7 +55,7 @@
     "com.openai": {
       "onboardingSkill": "./skills/embrasure-data/SKILL.md",
       "publication": {
-        "release_notes": "Updated the listing and starter prompts around one-prompt warehouse setup, analytics, and dashboards. The bundled skill uses the installed MCP connection and continues through data sync to a verified first answer. Read and write operations have separate tools; previously installed tool calls remain compatible."
+        "release_notes": "Updated the listing and starter prompts around one-prompt warehouse setup, analytics, and dashboards. The bundled skill uses the installed MCP connection and continues through data sync to a verified first answer. Read and write operations have separate tools; previously installed tool calls remain compatible. When the Embrasure tools are missing, the skill checks the client's MCP status, distinguishes a signed-out connection from a missing or unavailable one, and offers to reconnect."
       },
       "review": {
         "demo_recording_url": "https://github.com/EmbrasureAI/embrasure-plugins/releases/download/v0.6.2/embrasure-mcp-five-cases-2026-10-03.mp4",
