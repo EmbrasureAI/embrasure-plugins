@@ -80,8 +80,8 @@ future syncs but does not erase previously imported data. Retention, subprocesso
 and deletion requests are described in the privacy policy below.
 
 Source connections, ingestion, saved definitions, and dashboard edits can change
-workspace state. The agent uses previews where supported and asks for confirmation
-before configured data deletion. Keep credentials in the browser connection flow.
+workspace state. The agent uses previews where supported and deletes a dashboard, chart,
+dataset, or ingestion connection only when asked. Keep credentials in the browser connection flow.
 
 [Documentation](https://docs.embrasure.ai/mcp) ·
 [Privacy policy](https://embrasure.ai/privacy) ·
