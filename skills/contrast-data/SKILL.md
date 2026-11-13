@@ -1,19 +1,19 @@
 ---
-name: embrasure-data
-description: Set up a data warehouse and analytics from one prompt, connect sources, reach a verified first answer, and build dashboards with Embrasure.
+name: contrast-data
+description: Set up a data warehouse and analytics from one prompt, connect sources, reach a verified first answer, and build dashboards with Contrast.
 ---
 
-# Embrasure: one-prompt warehouse and analytics
+# Contrast: one-prompt warehouse and analytics
 
-Use the Embrasure tools for the connected workspace. Keep the user-facing name Embrasure.
+Use the Contrast tools for the connected workspace. Keep the user-facing name Contrast.
 Never ask for warehouse passwords, API keys, or session tokens in chat; use browser connection links.
 
 ## Start with the user's first question
 
 Use the installed MCP connection. Do not send an already connected user through
 installation again or require an external setup guide. Start with `warehouse_status`
-and `sources_list` in the intended workspace. If the Embrasure tools are missing, or a
-call says “Connect Embrasure to continue”, follow “When the Embrasure tools are missing” below.
+and `sources_list` in the intended workspace. If the Contrast tools are missing, or a
+call says “Connect Contrast to continue”, follow “When the Contrast tools are missing” below.
 
 For a new warehouse, inspect `warehouse_plan` and apply the requested setup. Inspect
 source types, connect the requested sources through browser handoffs, then plan and
@@ -32,39 +32,39 @@ data. A connected source or running sync is not a completed answer. Verify query
 and report ready, pending, and blocked sources before claiming analytics are ready.
 For an existing warehouse, go straight to the requested question or dashboard.
 
-## When the Embrasure tools are missing
+## When the Contrast tools are missing
 
 Some clients, including Codex, hide MCP startup and sign-in failures from the agent.
 Missing tools alone do not show that sign-in is needed. If the client loads tools on
-demand, search for the Embrasure tools first. If they are still missing, find the
+demand, search for the Contrast tools first. If they are still missing, find the
 client's entry whose URL is `https://embrasure.ai/api/mcp`, and use its listed name:
 
 - Codex: `codex mcp list`. Read the Status column first, then Auth.
-- Claude Code: `claude mcp list`. Plugin installs list `plugin:embrasure:embrasure`.
-- No shell, ChatGPT, or Cursor: ask the user what Embrasure shows in the client's MCP
+- Claude Code: `claude mcp list`. Plugin installs list `plugin:contrast:contrast`.
+- No shell, ChatGPT, or Cursor: ask the user what Contrast shows in the client's MCP
   or app settings (ChatGPT: Settings, then Apps; Cursor: Cursor Settings, then MCP).
 
 Tell the user which case applies:
 
 - **Installed, needs sign-in.** Codex: Status `enabled` and Auth `Not logged in`.
-  Claude Code: `Needs authentication`. A tool call that says “Connect Embrasure to
+  Claude Code: `Needs authentication`. A tool call that says “Connect Contrast to
   continue” means the same. Offer to reconnect right away (see below).
 - **Not installed or disabled.** No entry, Codex Status `disabled`, or Claude Code
-  `Disabled for this project`. Offer to install or enable the Embrasure plugin
+  `Disabled for this project`. Offer to install or enable the Contrast plugin
   (Claude Code: re-enable it in `/mcp`). Don't start a login for it.
 - **Status unclear.** Codex Auth `Unknown`, Claude Code `Failed to connect`, a missing
   command, or a sandboxed shell without network access. Don't call the user signed in
   or signed out. Rerun the check with network access, or ask the user to run it in
   their own terminal.
-- **Signed in, tools still missing.** Codex Auth `OAuth`. Check whether Embrasure is up:
+- **Signed in, tools still missing.** Codex Auth `OAuth`. Check whether Contrast is up:
   ```sh
   curl -sS -m 10 -o /dev/null -w '%{http_code}\n' https://api.embrasure.ai/health
   curl -sS -m 10 -o /dev/null -w '%{http_code}\n' -X POST -H 'Content-Type: application/json' -d '{}' https://embrasure.ai/api/mcp
   ```
-  `200` then `401` means Embrasure is up. The `401` only shows the endpoint is
+  `200` then `401` means Contrast is up. The `401` only shows the endpoint is
   reachable, not why your client's sign-in failed. The saved sign-in is probably no
   longer accepted, so offer to reconnect once. Anything else, including `000` for a
-  timeout or DNS failure, means Embrasure is unavailable or unreachable. Report it and don't send the user through
+  timeout or DNS failure, means Contrast is unavailable or unreachable. Report it and don't send the user through
   sign-in. From a sandboxed shell, a network error proves nothing.
 
 To reconnect, ask first. The command opens a browser and waits until the user approves:
@@ -136,4 +136,4 @@ mutation blindly. A source being connected does not mean its tables are current.
 
 The query tool rejects SQL that changes table data. Use SELECT/WITH against authorized qualified
 warehouse relations. Warehouse teardown, deleting warehouse rows, arbitrary API calls, and secret management are outside
-this plugin. An admin handles data-subject deletion in Embrasure under Governance.
+this plugin. An admin handles data-subject deletion in Contrast under Governance.

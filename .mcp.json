@@ -1,6 +1,6 @@
 {
   "mcpServers": {
-    "embrasure": {
+    "contrast": {
       "type": "http",
       "url": "https://embrasure.ai/api/mcp"
     }

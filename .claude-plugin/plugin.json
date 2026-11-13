@@ -1,9 +1,9 @@
 {
-  "name": "embrasure",
-  "version": "0.7.0",
+  "name": "contrast",
+  "version": "0.7.1",
   "description": "Your data warehouse, analytics, and beautiful dashboards, one prompt away",
   "author": {
-    "name": "Embrasure",
+    "name": "Contrast",
     "url": "https://embrasure.ai",
     "email": "support@embrasure.ai"
   },
@@ -16,14 +16,13 @@
     "sql",
     "ingestion",
     "context",
-    "ember",
     "mcp"
   ],
   "license": "MIT",
   "skills": "./skills/",
   "mcpServers": "./.mcp.json",
-  "displayName": "Embrasure",
-  "icon": "./assets/embrasure-icon.png",
+  "displayName": "Contrast",
+  "icon": "./assets/contrast-icon.png",
   "documentationUrl": "https://docs.embrasure.ai/mcp",
   "supportUrl": "https://embrasure.ai/support",
   "privacyPolicyUrl": "https://embrasure.ai/privacy",
