@@ -1,11 +1,11 @@
 {
-  "name": "embrasure",
+  "name": "contrast",
   "interface": {
-    "displayName": "Embrasure"
+    "displayName": "Contrast"
   },
   "plugins": [
     {
-      "name": "embrasure",
+      "name": "contrast",
       "source": {
         "source": "local",
         "path": "./"
